@@ -1,0 +1,16 @@
+.ui-spinner {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border-bottom: 2px solid var(--spinner-color, var(--c-white));
+  animation: spinner-rotate 1s linear infinite;
+}
+
+@keyframes spinner-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

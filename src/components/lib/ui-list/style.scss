@@ -1,0 +1,10 @@
+.ui-list {
+  padding: 16px;
+  border-radius: 12px;
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+}

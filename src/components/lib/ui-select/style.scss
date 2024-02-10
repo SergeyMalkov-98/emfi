@@ -1,0 +1,28 @@
+.ui-select {
+  width: fit-content;
+  position: relative;
+
+  &__view {
+    padding: 10px;
+    background: var(--c-grey-300);
+    cursor: pointer;
+  }
+
+  &__items {
+    padding: 10px;
+    background: var(--c-grey-600);
+    position: absolute;
+  }
+
+  &__item {
+    cursor: pointer;
+    transition: 0.2s;
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+
+    &:hover {
+      color: var(--c-blue);
+    }
+  }
+}

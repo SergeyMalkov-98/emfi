@@ -1,0 +1,29 @@
+@use 'colors' as *;
+
+* {
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #101b24;
+}
+
+body {
+  background: linear-gradient(
+    180deg,
+    #101b24 0%,
+    #101b24 0.01%,
+    #1b3042 30.73%,
+    #1b3042 69.27%,
+    #101d26 100%
+  );
+  background-attachment: fixed;
+  color: var(--c-white);
+}
