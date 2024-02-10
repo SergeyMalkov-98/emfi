@@ -3,5 +3,5 @@
 </template>
 
 <style lang="scss">
-@use 'style';
+@use "style";
 </style>

@@ -1,12 +1,12 @@
-import Cookie from 'universal-cookie';
-import axios from 'axios';
+import Cookie from "universal-cookie";
+import axios from "axios";
 
 import { refreshTokens } from "@/api/auth.js";
 
 const cookie = new Cookie();
 
 const $api = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_URL,
+  baseURL: import.meta.env.VITE_APP_BASE_URL
 });
 
 const useQueue = () => {
@@ -33,17 +33,17 @@ const useQueue = () => {
 };
 
 const setAxiosToken = (token) => {
-  $api.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : undefined;
+  $api.defaults.headers.common["Authorization"] = token ? `Bearer ${token}` : undefined;
 };
 
 const setTokens = ({ access, refresh }) => {
-  cookie.set('accessToken', access, { path: '/' });
-  cookie.set('refreshToken', refresh, { path: '/' });
+  cookie.set("accessToken", access, { path: "/" });
+  cookie.set("refreshToken", refresh, { path: "/" });
 
   setAxiosToken(access);
 };
 
-setAxiosToken(cookie.get('accessToken'));
+setAxiosToken(cookie.get("accessToken"));
 
 const handleError = (err) => {
   let { isRefreshing, failedQueue, processQueue } = useQueue();
@@ -56,7 +56,7 @@ const handleError = (err) => {
         failedQueue.value.push({ resolve, reject });
       })
         .then((token) => {
-          originalRequest.headers['Authorization'] = token ? `Bearer ${token}` : undefined;
+          originalRequest.headers["Authorization"] = token ? `Bearer ${token}` : undefined;
           return $api(originalRequest);
         })
         .catch((err) => Promise.reject(err));
@@ -66,7 +66,7 @@ const handleError = (err) => {
     isRefreshing = true;
 
     return new Promise((resolve, reject) => {
-      refreshTokens(cookie.get('refreshToken'))
+      refreshTokens(cookie.get("refreshToken"))
         .then(({ data: { access_token, refresh_token } }) => {
           setTokens({ access: access_token, refresh: refresh_token });
           processQueue(null, access_token);
@@ -82,7 +82,7 @@ const handleError = (err) => {
         });
     });
   }
-}
+};
 
 $api.interceptors.response.use(undefined, handleError);
 

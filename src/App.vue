@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import Leads from '@/components/leads.vue';
+import Leads from "@/components/leads.vue";
 </script>
 
 <style scoped lang="scss">

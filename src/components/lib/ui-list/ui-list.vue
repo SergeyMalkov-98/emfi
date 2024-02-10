@@ -2,11 +2,12 @@
   <loader-wrapper :loading="loading">
     <div class="ui-list">
       <div class="ui-list__items">
-        <div class="ui-list__item" v-for="item in items" :key="item">
+        <div v-for="item in items" class="ui-list__item" :key="item">
           <slot v-bind="{ item }" />
         </div>
       </div>
-      <div v-if="!items.length" class="ui-list__empty">
+      <div v-if="!items.length"
+class="ui-list__empty">
         <slot name="empty" />
       </div>
     </div>
@@ -14,7 +15,7 @@
 </template>
 
 <script setup>
-import LoaderWrapper from '@/components/loader-wrapper.vue';
+import LoaderWrapper from "@/components/loader-wrapper.vue";
 
 const props = defineProps({
   items: {
@@ -29,5 +30,5 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-@use 'style';
+@use "style";
 </style>

@@ -16,11 +16,11 @@
       <div class="lead-item__info-label">Дата обновления</div>
       {{ getDate(props.item.updated_at) }}
     </div>
-    <div class="lead-item__info" v-if="showCompani">
+    <div v-if="showCompani" class="lead-item__info">
       <div class="lead-item__info-label">Компания</div>
-      <div class="lead-item__compani-info" v-if="!loadCompani">
-        <span @click="getCompany" v-show="!compani">получить компанию</span>
-        <span @click="getCompany" v-show="compani">{{ compani?.name }}</span>
+      <div v-if="!loadCompani" class="lead-item__compani-info">
+        <span v-show="!compani" @click="getCompany">получить компанию</span>
+        <span v-show="compani" @click="getCompany">{{ compani?.name }}</span>
       </div>
       <ui-spinner v-else />
     </div>
@@ -48,7 +48,7 @@ const props = defineProps({
 const compani = ref(null);
 const loadCompani = ref(false);
 
-let formatPrice = new Intl.NumberFormat('ru-RU', {
+const formatPrice = new Intl.NumberFormat('ru-RU', {
   style: 'currency',
   currency: 'RUB'
 });

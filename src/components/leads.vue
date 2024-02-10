@@ -5,7 +5,7 @@
         <button @click="sort('price')">Сортировка по бюджету(по возрастанию)</button>
         <button @click="sort('name')">Сортировка по названию сделки(по возрастанию)</button>
       </div>
-      <ui-select :items="selectItems" v-model="selectValue" class="leads__select" />
+      <ui-select v-model="selectValue" :items="selectItems" class="leads__select" />
       <ui-list :items="leadsItems" :loading="loading">
         <template #default="{ item }">
           <lead-item :item="item" @sort="sort" />

@@ -1,10 +1,12 @@
 <template>
   <div class="ui-select">
-    <div class="ui-select__view" @click="show = !show">
+    <div class="ui-select__view"
+@click="show = !show">
       {{ modelValue.name }}
     </div>
-    <div class="ui-select__items" v-show="show">
-      <div class="ui-select__item" @click="select(item)" v-for="(item, idx) in items" :key="idx">
+    <div v-show="show" class="ui-select__items">
+      <div class="ui-select__item"
+@click="select(item)" v-for="(item, idx) in items" :key="idx">
         {{ item.name }}
       </div>
     </div>
@@ -12,7 +14,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 const props = defineProps({
   modelValue: {
@@ -25,16 +27,16 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(["update:modelValue"]);
 
 const show = ref(false);
 
 const select = (item) => {
   show.value = false;
-  emit('update:modelValue', item);
+  emit("update:modelValue", item);
 };
 </script>
 
 <style lang="scss">
-@use 'style';
+@use "style";
 </style>
